@@ -9,6 +9,9 @@
 2. C1の計測方法
 　・デフォルトだとC0の計測のみを行う。C1はlcov, genhtmlで次の手順を実行しないと計測されない。
 　1. lcov: genhtml_branch_coverage = 1のコメント解除
-　2. lcov: lcov_branch_coverage = 1 を設定する。ただ、genthml_branch_coverageを設定すると1に上書きされるらしい。
-　3. genthml: --branch-coverageを指定する
-　＊lcov --rcで上記パラメータを設定出来るらしいが、生成されるHTMLにC1項目が増えるものの、[-]として計測自体されてない気がする。
+　2. lcov: lcov_branch_coverage = 1 を設定する。lcovを叩くたびに付けないとパラメータが0にリセットされるらしい。
+           ただ、genthml_branch_coverageを設定すると自動的に1に上書きされるらし。い
+　3. genthml: --branch-coverageを指定する。これをしないとHTML上に表示されない。
+  *lcov --rcで上記パラメータを設定出来るらしいが、生成されるHTMLにC1項目が増えるものの、[-]として計測自体されてない気がする。
+  *したがって1 or 2, 3の2つ手順を実行すればC1の計測が可能になる。
+  *コマンドライン上では2を実行するのが楽で良い。(ファイルを書き換えずに出来る)
